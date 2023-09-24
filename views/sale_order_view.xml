@@ -1,0 +1,26 @@
+<odoo>
+    <data>
+        <record id="view_sale_order_form_inherit" model="ir.ui.view">
+            <field name="name">sale.order.form.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="request_vendor" string="Request Vendor" />
+                    <field name="no_kontrak" string="No Kontrak" />
+                    <field name="with_po" string="With PO" />
+                </xpath>
+                <field name="order_line" position="before">
+                    <page string="Purchase Orders">
+                        <field name="purchase_order_ids" widget="one2many_list" options="{'quick_add': False}" context="{'default_sale_order_id': active_id}">
+                            <tree>
+                                <field name="name" />
+                                <!-- Tambahkan field lain yang Anda butuhkan di sini -->
+                            </tree>
+                        </field>
+                    </page>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>
